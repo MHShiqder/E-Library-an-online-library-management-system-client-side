@@ -7,18 +7,17 @@ const Header = () => {
     const navigate=useNavigate()
     const {user,userSignOut}=useContext(AuthContext)
     const links = <>
+
         <NavLink className="btn btn-ghost font-semibold mr-2" to="/">Home</NavLink>
-        <NavLink className="btn btn-ghost font-semibold mr-2" to="/all-visa">All visas</NavLink>
-        <NavLink className="btn btn-ghost font-semibold mr-2" to="/add-visa">Add Visa</NavLink>
-
-        {user?<NavLink className="btn btn-ghost font-semibold mr-2" to={`/added-visa/${user?.email}`}>My added visas</NavLink>:<NavLink className="btn btn-ghost font-semibold mr-2" to={`/login`}>My added visas</NavLink>}
-
-        {user?<NavLink className="btn btn-ghost font-semibold mr-2" to={`/visa-application/${user?.email}`}>My Visa applications</NavLink>:<NavLink className="btn btn-ghost font-semibold mr-2" to={`/login`}>My Visa applications</NavLink>}
-        
+        <NavLink className="btn btn-ghost font-semibold mr-2" to="/all-books">All Books</NavLink>
+        <NavLink className="btn btn-ghost font-semibold mr-2" to="/add-book">Add Book</NavLink>
+        <NavLink className="btn btn-ghost font-semibold mr-2" to="/borrowed-books">Borrowed Books</NavLink>
+               
     </>
+
     const handleSignOut=()=>{
         userSignOut()
-        .then(result=>{
+        .then(()=>{
             toast.success("Logged out Successfully")
             navigate("/")
         })
@@ -33,7 +32,7 @@ const Header = () => {
                 <div className="navbar w-11/12 mx-auto p-0">
                     <div className="navbar-start md:w-1/2 w-2/3">
                         <div className="dropdown text-black">
-                            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-white">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-5 w-5"
@@ -56,7 +55,7 @@ const Header = () => {
                             </ul>
                         </div>
                         <Link to="/">
-                        <h1 className="text-4xl font-bold border-2 border-white px-2 py-1">VN</h1>
+                        <h1 className="text-2xl sm:text-4xl  font-bold border-2 border-white px-2 py-1">E-Library</h1>
                         </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
@@ -69,7 +68,7 @@ const Header = () => {
                     <div className="navbar-end w-1/3 md:w-1/2">
                         {
                             user
-                            ?<div className="flex group hover:bg-sky-300 absolute flex-col p-3 pt-1 rounded-lg top-1  gap-2 items-end my-2 ">
+                            ?<div className="flex group hover:bg-sky-300 absolute flex-col p-3 pt-1 rounded-lg top-1  gap-2 items-end  my-auto">
                                 <img className="w-12 h-12 rounded-full object-cover " src={`${user.photoURL}`} alt="" />
                                 <h2 className="text-black hidden group-hover:block">{user.displayName}</h2>
                                 <button onClick={handleSignOut} className="hidden group-hover:block btn bg-white   top-14 hover:bg-slate-100 ">Logout</button>

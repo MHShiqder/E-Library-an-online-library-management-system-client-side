@@ -4,13 +4,13 @@ const Footer = () => {
         <footer className="footer footer-center bg-blue-950 text-white p-10 grid md:grid-cols-3">
             <div>
                 <h3 className="font-bold text-xl">Contact</h3>
-                <p className="font-semibold">Email us at: support@visanavigator.com</p>
+                <p className="font-semibold">Email us at: support@mslibrary.com</p>
                 <p className="font-semibold">Phone: +44 7700 900000</p>
             </div>
             <aside>
-            <h3 className="font-bold text-xl">Visa Navigator Ltd.</h3>
+            <h3 className="font-bold text-xl">Model School Library.</h3>
                 <p className="font-bold">
-                    Providing effective visa service since 1992
+                    Providing library facility online
                                         
                 </p>
                 

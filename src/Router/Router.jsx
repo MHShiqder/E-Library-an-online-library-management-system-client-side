@@ -4,6 +4,11 @@ import ErrorPage from "../Component/ErrorPage";
 import Home from "../Layout/Home";
 import Register from "../Component/Register";
 import Login from "../Component/Login";
+import AllBooks from "../Layout/AllBooks";
+import AddBook from "../Layout/AddBook";
+import BorrowedBooks from "../Layout/BorrowedBooks";
+import PrivateProfile from "../Component/PrivateProfile";
+import Forget from "../Component/Forget";
 
 export const router = createBrowserRouter([
     {
@@ -22,6 +27,22 @@ export const router = createBrowserRouter([
             {
                 path:"/login",
                 element:<Login></Login>,
+            },
+            {
+                path:"/forget",
+                element:<Forget></Forget>,
+            },
+            {
+                path:"/all-books",
+                element:<PrivateProfile><AllBooks></AllBooks></PrivateProfile>,
+            },
+            {
+                path:"/add-book",
+                element:<PrivateProfile><AddBook></AddBook></PrivateProfile>,
+            },
+            {
+                path:"/borrowed-books",
+                element:<PrivateProfile><BorrowedBooks></BorrowedBooks></PrivateProfile>,
             },
         ]
     },
