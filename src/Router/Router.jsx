@@ -9,6 +9,7 @@ import AddBook from "../Component/AddBook";
 import BorrowedBooks from "../Component/BorrowedBooks";
 import PrivateProfile from "../Component/PrivateProfile";
 import Forget from "../Component/Forget";
+import BookUpdate from "../Component/BookUpdate";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,7 @@ export const router = createBrowserRouter([
             {
                 path:"/all-books",
                 element:<PrivateProfile><AllBooks></AllBooks></PrivateProfile>,
+                loader:()=>fetch("http://localhost:5000/all-books"),
             },
             {
                 path:"/add-book",
@@ -43,6 +45,10 @@ export const router = createBrowserRouter([
             {
                 path:"/borrowed-books",
                 element:<PrivateProfile><BorrowedBooks></BorrowedBooks></PrivateProfile>,
+            },
+            {
+                path:"/book-update/:id",
+                element:<PrivateProfile><BookUpdate></BookUpdate></PrivateProfile>,
             },
         ]
     },
