@@ -18,29 +18,25 @@ const divStyle = {
 
 
 
-
-
-
-
 const slideImages = [
   {
-    url: 'https://i.ibb.co.com/J2xKjjZ/benoit-beaumatin-FKcvr-ldke-Q-unsplash.jpg',
+    url: 'https://i.ibb.co.com/9gRckVy/jessica-ruscello-OQSCtab-Gk-SY-unsplash.jpg',
     caption: 'Slide 1'
   },
   {
-    url: 'https://i.ibb.co.com/fCwfR8M/krupali-patel-o-Jh-IQSt6-SIo-unsplash-1.jpg',
+    url: 'https://i.ibb.co.com/7z2n3SL/thomas-kelley-h-HL08l-F7-Ikc-unsplash.jpg',
     caption: 'Slide 2'
   },
   {
-    url: 'https://i.ibb.co.com/Jp0x5LW/tanuj-adhikary-7-UJ5rrg4-Ml-Q-unsplash.jpg',
+    url: 'https://i.ibb.co.com/nLZ8TgQ/jonathan-francisca-Bpbk-LACP64-M-unsplash.jpg',
     caption: 'Slide 3'
   },
   {
-    url: 'https://i.ibb.co.com/tQkZ6dK/christine-roy-ir5-MHI6r-Pg0-unsplash.jpg',
+    url: 'https://i.ibb.co.com/DYChggv/inaki-del-olmo-NIJu-EQw0-RKg-unsplash-1.jpg',
     caption: 'Slide 4'
   },
   {
-    url: 'https://i.ibb.co.com/hHc67sc/kyle-glenn-n-Xt5-Ht-Lmlg-E-unsplash.jpg',
+    url: 'https://i.ibb.co.com/GP20Syp/giammarco-boscaro-ze-H-ljaw-Htg-unsplash.jpg',
     caption: 'Slide 5'
   },
 ];

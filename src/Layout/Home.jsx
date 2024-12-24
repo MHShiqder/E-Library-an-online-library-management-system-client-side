@@ -5,7 +5,7 @@ import { useTypewriter } from 'react-simple-typewriter'
 const Home = () => {
     // Typewriter helper
     const [text] = useTypewriter({
-        words: ['Well-Come To Visa-Navigator'],
+        words: ['Welcome To E-Library'],
         loop: 0
     })
 

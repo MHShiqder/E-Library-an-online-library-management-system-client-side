@@ -4,9 +4,9 @@ import ErrorPage from "../Component/ErrorPage";
 import Home from "../Layout/Home";
 import Register from "../Component/Register";
 import Login from "../Component/Login";
-import AllBooks from "../Layout/AllBooks";
-import AddBook from "../Layout/AddBook";
-import BorrowedBooks from "../Layout/BorrowedBooks";
+import AllBooks from "../Component/AllBooks";
+import AddBook from "../Component/AddBook";
+import BorrowedBooks from "../Component/BorrowedBooks";
 import PrivateProfile from "../Component/PrivateProfile";
 import Forget from "../Component/Forget";
 
