@@ -15,8 +15,8 @@ const Home = () => {
             
 
             {/* Typewriter text  */}
-            <div className='App text-3xl font-bold mt-5'>
-               <h2><span className="text-red-500">{text}</span>... </h2>
+            <div className='App text-5xl font-bold mt-5'>
+               <h2><span className="text-sky-500">{text}</span>. </h2>
             </div>
             <Slideshow></Slideshow>
             <CategoryCard></CategoryCard>

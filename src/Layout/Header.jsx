@@ -55,7 +55,7 @@ const Header = () => {
                             </ul>
                         </div>
                         <Link to="/">
-                        <h1 className="text-2xl sm:text-4xl  font-bold border-2 border-white px-2 py-1">E-Library</h1>
+                        <h1 className="text-2xl sm:text-4xl  font-bold border-4 border-white px-2 py-1">E-Library</h1>
                         </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">

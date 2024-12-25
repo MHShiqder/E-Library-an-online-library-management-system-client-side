@@ -17,7 +17,8 @@ const BookDetails = () => {
         const userName=user?.displayName;
         const userEmail=user?.email;
         const bookId=_id;
-        const borrowData={userEmail,userName,Image, Name, selectedCategory, Description, quantity2, ratings, AName, Content,returnDate,bookId}
+        const borrowDate=new Date().toISOString().split("T")[0];
+        const borrowData={userEmail,userName,Image, Name, selectedCategory, Description, quantity2, ratings, AName, Content,returnDate,bookId,borrowDate}
         axios.post("http://localhost:5000/book-borrow",borrowData)
         .then(res=>{
             setQuantity2(quantity2-1)
@@ -84,7 +85,7 @@ const BookDetails = () => {
                             <label className="label">
                                 <span className="label-text font-bold">Return Date</span>
                             </label>
-                            <input type="date" name='date' className='input input-bordered' min={new Date().toISOString().split("T")[0]} />
+                            <input type="date" name='date' className='input input-bordered' min={new Date().toISOString().split("T")[0]} required/>
                         </div>
 
                         <div className="form-control mt-6">

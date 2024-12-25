@@ -1,9 +1,23 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import BorrowedBookCard from './BorrowedBookCard';
+import { AuthContext } from '../provider/AuthProvider';
 
 const BorrowedBooks = () => {
+    const {user}=useContext(AuthContext)
+    const [books, setBooks] = useState([])
+    useEffect(() => {
+        axios.get(`http://localhost:5000/book-borrow/${user.email}`)
+            .then(res => {
+                setBooks(res.data)
+            })
+    }, [])
     return (
-        <div>
-            Borrowed books
+        <div className='w-11/12 mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-10 my-10'>
+            {
+                books.map((book,idx)=><BorrowedBookCard books={books} setBooks={setBooks} book={book} key={idx}></BorrowedBookCard>)
+        }
         </div>
     );
 };
