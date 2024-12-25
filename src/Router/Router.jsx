@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
             {
                 path:"/all-books",
                 element:<PrivateProfile><AllBooks></AllBooks></PrivateProfile>,
-                loader:()=>fetch("http://localhost:5000/all-books"),
+                
             },
             {
                 path:"/add-book",
@@ -49,6 +49,7 @@ export const router = createBrowserRouter([
             {
                 path:"/book-update/:id",
                 element:<PrivateProfile><BookUpdate></BookUpdate></PrivateProfile>,
+                loader:({params})=>fetch(`http://localhost:5000/book-update/${params.id}`)
             },
         ]
     },
