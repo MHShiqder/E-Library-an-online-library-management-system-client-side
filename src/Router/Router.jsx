@@ -11,6 +11,7 @@ import PrivateProfile from "../Component/PrivateProfile";
 import Forget from "../Component/Forget";
 import BookUpdate from "../Component/BookUpdate";
 import CategoricalBooks from "../Component/CategoricalBooks";
+import BookDetails from "../Component/BookDetails";
 
 export const router = createBrowserRouter([
     {
@@ -56,6 +57,11 @@ export const router = createBrowserRouter([
                 path:"/categorical-book/:category",
                 element:<PrivateProfile><CategoricalBooks></CategoricalBooks></PrivateProfile>,
                 loader:({params})=>fetch(`http://localhost:5000/categorical-book/${params.category}`)
+            },
+            {
+                path:"/book-details/:id",
+                element:<PrivateProfile><BookDetails></BookDetails></PrivateProfile>,
+                loader:({params})=>fetch(`http://localhost:5000/book-details/${params.id}`)
             },
         ]
     },
