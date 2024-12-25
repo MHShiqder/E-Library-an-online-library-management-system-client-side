@@ -1,3 +1,4 @@
+import CategoryCard from "../Component/CategoryCard";
 import Slideshow from "../Component/Slideshow";
 import { useTypewriter } from 'react-simple-typewriter'
 
@@ -18,10 +19,7 @@ const Home = () => {
                <h2><span className="text-red-500">{text}</span>... </h2>
             </div>
             <Slideshow></Slideshow>
-            {/* <div className="w-64 mx-auto">
-                <h2 className="text-4xl font-bold">Lets explore the world </h2>
-            <Lottie animationData={groovyWalkAnimation} />
-            </div> */}
+            <CategoryCard></CategoryCard>
         </div>
     );
 };

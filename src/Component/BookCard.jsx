@@ -15,8 +15,8 @@ const BookCard = ({ book }) => {
                 </figure>
                 <div className="card-body p-5  items-center text-center gap-0">
                     <h2 className="card-title">{Name}</h2>
-                    <p className=''>Author: {AName}</p>
-                    <p className='mb-2'>Available: {quantity} pcs</p>
+                    <p className=''><span className='font-semibold'>Author:</span> {AName}</p>
+                    <p className='mb-2'><span className='font-semibold'>Available:</span> {quantity} pcs</p>
                     <div className="card-actions justify-center ">
                         <Link to={`/book-update/${_id}`}><button className="btn btn-ghost bg-sky-300">Update</button></Link>
                     </div>
