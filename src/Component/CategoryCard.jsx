@@ -9,8 +9,8 @@ const CategoryCard = () => {
         <div className='my-10 grid md:grid-cols-2 gap-5 w-11/12 mx-auto'>
             
             {
-                categories.map(category => {
-                    return <Link to={`/categorical-book/${category}`}>
+                categories.map((category,idx) => {
+                    return <Link key={idx} to={`/categorical-book/${category}`}>
                         <div className='bg-sky-300 p-10'>
                             <h1 className='text-3xl font-bold'>{category}</h1>
                         </div>
