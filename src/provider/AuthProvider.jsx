@@ -1,58 +1,76 @@
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../../firebase.init";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth"
+import axios from "axios";
 
 export const AuthContext = createContext()
 const AuthProvider = ({ children }) => {
-    const [user,setUser]=useState(null)
-    const [loading,setLoading]=useState(true)
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
     // set observer 
-    useEffect(()=>{
-        const unsubscribe=onAuthStateChanged(auth,currentUser=>{
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
             console.log('current user', currentUser)
             setUser(currentUser);
-            setLoading(false)
+
+            if (currentUser?.email) {
+                const user = { email: currentUser.email }
+                axios.post("http://localhost:5000/jwt", user, { withCredentials: true })
+                    .then(res => {
+                        console.log("login",res.data)
+                        setLoading(false)
+                    })
+            }
+            else {
+                axios.post("http://localhost:5000/logout", {}, { withCredentials: true })
+                    .then(res => {
+                        console.log("logout",res.data)
+                        setLoading(false)
+                    })
+            }
+
+
         })
-        return ()=>{
+        return () => {
             unsubscribe()
         }
-    },[])
-    const googleProvider=new GoogleAuthProvider()
+    }, [])
+    const googleProvider = new GoogleAuthProvider()
     // creating or register user 
-    const createUser=(email,password)=>{
+    const createUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     // register using google 
-    const createGoogleUser=()=>{
+    const createGoogleUser = () => {
         setLoading(true)
-        return signInWithPopup(auth,googleProvider)
+        return signInWithPopup(auth, googleProvider)
     }
     // update name and photo 
-    const updateNamePhoto=(name,photo)=>{
-        
-        return updateProfile(auth.currentUser,{
-            displayName:name,
-            photoURL:photo,
+    const updateNamePhoto = (name, photo) => {
+
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photo,
         })
     }
     // login user 
-    const userLogin=(email,password)=>{
+    const userLogin = (email, password) => {
         setLoading(true)
-        return signInWithEmailAndPassword(auth,email,password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
     // signout a user 
-    const userSignOut=()=>{
+    const userSignOut = () => {
         return signOut(auth)
     }
     // forget password 
-    const passwordReset=(email)=>{
+    const passwordReset = (email) => {
         return sendPasswordResetEmail(auth, email)
     }
 
     // emailREf 
-    const [forgetEmail,setForgetEmail]=useState("")
-    const emailGetter=(email)=>{
+    const [forgetEmail, setForgetEmail] = useState("")
+    const emailGetter = (email) => {
         setForgetEmail(email);
     }
     // context info 
@@ -68,7 +86,7 @@ const AuthProvider = ({ children }) => {
         forgetEmail,
         loading,
     }
-    
+
 
 
     return (

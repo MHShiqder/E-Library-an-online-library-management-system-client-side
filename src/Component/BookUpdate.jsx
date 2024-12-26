@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const BookUpdate = () => {
     const navigate=useNavigate()
@@ -27,7 +28,7 @@ const BookUpdate = () => {
 
         const formDocument = { Image, Name, selectedCategory2, contributor, ratings, AName }
         // console.log(formDocument)
-        axios.put(`http://localhost:5000/update-books/${id}`, formDocument)
+        axios.put(`http://localhost:5000/update-books/${id}`, formDocument,{withCredentials:true})
 
             .then(res => {
                 console.log(res.data)
@@ -37,6 +38,9 @@ const BookUpdate = () => {
     }
     return (
         <div className="p-10 shadow-2xl mx-auto my-10 text-center w-96">
+            <Helmet>
+                <title>Update Info | E-Library</title>
+            </Helmet>
             <h2 className="font-bold text-5xl mb-5">Update Info</h2>
             <form onSubmit={handleSubmit}>
 

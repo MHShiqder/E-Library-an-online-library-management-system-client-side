@@ -2,18 +2,22 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import BorrowedBookCard from './BorrowedBookCard';
 import { AuthContext } from '../provider/AuthProvider';
+import { Helmet } from 'react-helmet-async';
 
 const BorrowedBooks = () => {
     const { user } = useContext(AuthContext)
     const [books, setBooks] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:5000/book-borrow/${user.email}`)
+        axios.get(`http://localhost:5000/book-borrow/${user.email}`,{withCredentials:true})
             .then(res => {
                 setBooks(res.data)
             })
     }, [])
     return (
         <div>
+            <Helmet>
+                <title>Borrowed-Books | E-Library</title>
+            </Helmet>
             {
                 books.length < 1 ? <div className='text-center my-32'><h1 className='text-5xl font-bold'>No books borrowed </h1></div> :
                     <div className='w-11/12 mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-10 my-10'>

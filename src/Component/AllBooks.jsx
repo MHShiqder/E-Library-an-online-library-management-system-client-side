@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import BookCard from './BookCard';
+import { Helmet } from 'react-helmet-async';
+import axios from 'axios';
 
 const AllBooks = () => {
 
     // state for the all books 
     const [books, setBooks] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/all-books")
-            .then(res => res.json())
-            .then(data => setBooks(data))
+        // fetch("http://localhost:5000/all-books")
+        //     .then(res => res.json())
+        //     .then(data => setBooks(data))
+        axios.get("http://localhost:5000/all-books",{withCredentials:true})
+        .then(res=>setBooks(res.data))
     }, [])
     const handleFilter = e => {
         e.preventDefault();
@@ -25,6 +29,9 @@ const AllBooks = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>All-Books | E-Library</title>
+            </Helmet>
             <div className='w-11/12 mx-auto mt-10 flex flex-col md:flex-row justify-between gap-5'>
                 <button onClick={handleFilter} className='btn btn-ghost bg-sky-300 rounded-none text-xl px-10 '>Show Available Books</button>
                 <select onChange={handleToggle} className='btn btn-ghost bg-sky-300 rounded-none text-xl px-10' defaultValue={"view"} id="">

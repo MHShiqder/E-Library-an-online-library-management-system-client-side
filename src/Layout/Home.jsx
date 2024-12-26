@@ -3,6 +3,7 @@ import Slideshow from "../Component/Slideshow";
 import { useTypewriter } from 'react-simple-typewriter'
 import Success from "../Component/Success";
 import Newsletter from "../Component/Newsletter";
+import { Helmet } from "react-helmet-async";
 
 
 const Home = () => {
@@ -15,7 +16,9 @@ const Home = () => {
     return (
         <div className="text-center">
             
-
+            <Helmet>
+                <title>Home | E-Library</title>
+            </Helmet>
             {/* Typewriter text  */}
             <div className='App text-5xl font-bold mt-5'>
                <h2 className="text-sky-500">[ <span >{text}</span> ]  </h2>

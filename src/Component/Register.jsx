@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const navigate = useNavigate()
@@ -54,6 +55,9 @@ const Register = () => {
     }
     return (
         <div className="w-11/12 mx-auto text-center my-10">
+            <Helmet>
+                <title>Register | E-Library</title>
+            </Helmet>
             <h1 className="text-5xl font-bold  mb-5">Register Now</h1>
 
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">

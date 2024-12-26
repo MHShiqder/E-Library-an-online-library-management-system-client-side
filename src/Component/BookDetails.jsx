@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const BookDetails = () => {
     const [recentlyBorrowed,setRecentlyBorrowed]=useState(false)
@@ -11,7 +12,7 @@ const BookDetails = () => {
     // Load the borrowed books 
     const [books, setBooks] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:5000/book-borrow/${user.email}`)
+        axios.get(`http://localhost:5000/book-borrow/${user.email}`,{withCredentials:true})
             .then(res => {
                 setBooks(res.data)
             })
@@ -47,6 +48,9 @@ const BookDetails = () => {
 
     return (
         <div className='w-11/12 mx-auto my-10'>
+            <Helmet>
+                <title>Book-Details | E-Library</title>
+            </Helmet>
             <div className="card lg:card-side bg-base-100 shadow-2xl rounded-l-none">
                 <figure className='lg:w-1/3 p-5  '>
                     <img className='h-96 lg:h-full'

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import CategoricalBookCard from './CategoricalBookCard';
+import { Helmet } from 'react-helmet-async';
 
 const CategoricalBooks = () => {
     const {category} = useParams();
@@ -9,6 +10,9 @@ const CategoricalBooks = () => {
 
     return (
         <div className='my-10 text-center'>
+            <Helmet>
+                <title>{category}-Category | E-Library</title>
+            </Helmet>
 
             <h1 className='text-5xl font-bold'>{category}</h1>
             <div className='w-11/12 mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-10 my-10'>

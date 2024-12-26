@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const AddBook = () => {
     const { user } = useContext(AuthContext)
@@ -26,7 +27,7 @@ const AddBook = () => {
 
         const formDocument = { Image, Name, selectedCategory, Description, contributor,quantity,ratings,AName,Content }
         // console.log(formDocument)
-        axios.post("http://localhost:5000/add-books",formDocument)
+        axios.post("http://localhost:5000/add-books",formDocument,{withCredentials:true})
             
             .then(res => {
                 console.log(res.data)
@@ -36,6 +37,9 @@ const AddBook = () => {
     }
     return (
         <div className="w-11/12 mx-auto my-10 text-center">
+            <Helmet>
+                <title>Add-Book | E-Library</title>
+            </Helmet>
             <h2 className="font-bold text-5xl mb-5">Add Book</h2>
             <form onSubmit={handleSubmit}>
 

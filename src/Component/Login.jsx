@@ -2,12 +2,13 @@ import { useContext, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
     const navigate = useNavigate()
-    const location=useLocation()
-    const { userLogin,emailGetter,createGoogleUser } = useContext(AuthContext)
+    const location = useLocation()
+    const { userLogin, emailGetter, createGoogleUser } = useContext(AuthContext)
     const emailRef = useRef()
     // login button clicked 
     const handleLogin = (e) => {
@@ -26,7 +27,7 @@ const Login = () => {
             })
 
     }
-    const handleForgetClick=()=>{
+    const handleForgetClick = () => {
         emailGetter(emailRef.current.value)
         navigate("/forget")
     }
@@ -34,7 +35,7 @@ const Login = () => {
         e.preventDefault()
         createGoogleUser()
             .then(result => {
-                
+
                 toast.success("Logged in successfully")
                 navigate(location.state?.from || "/")
             })
@@ -43,6 +44,9 @@ const Login = () => {
 
     return (
         <div className="w-11/12 mx-auto text-center my-10">
+            <Helmet>
+                <title>Login | E-Library</title>
+            </Helmet>
             <h1 className="text-5xl font-bold  mb-5">Login Now</h1>
 
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
