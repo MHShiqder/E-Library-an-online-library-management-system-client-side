@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const BorrowedBookCard = ({ book, books, setBooks }) => {
     const {bookId, Image, Name, selectedCategory, AName, returnDate, borrowDate,userName } = book;
@@ -11,7 +12,7 @@ const BorrowedBookCard = ({ book, books, setBooks }) => {
         e.preventDefault()
         axios.delete(`http://localhost:5000/book-return/${bookId}`)
         .then(res=>{
-            console.log(res.data)
+            toast.success("The book is returned successfully")
             const newBookList=books.filter(book=>book.bookId!=bookId)
             setBooks(newBookList)
         })

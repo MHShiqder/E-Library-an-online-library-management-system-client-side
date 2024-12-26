@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ReactStars from "react-rating-stars-component";
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
@@ -6,9 +6,24 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const BookDetails = () => {
-    const { user } = useContext(AuthContext)
+    const [recentlyBorrowed,setRecentlyBorrowed]=useState(false)
+    const {user}=useContext(AuthContext)
+    // Load the borrowed books 
+    const [books, setBooks] = useState([])
+    useEffect(() => {
+        axios.get(`http://localhost:5000/book-borrow/${user.email}`)
+            .then(res => {
+                setBooks(res.data)
+            })
+    }, [])
+
+    
+    // destructuring the selected book for details 
     const { _id, Image, Name, selectedCategory, Description, quantity, ratings, AName, Content } = useLoaderData();
     const [quantity2,setQuantity2]=useState(quantity)
+    
+    // is the book already borrowed? 
+    const alreadyBorrowed=books.find(book=>book.bookId==_id)
 
     // form submit function 
     const handleSubmit=e=>{
@@ -22,6 +37,7 @@ const BookDetails = () => {
         axios.post("http://localhost:5000/book-borrow",borrowData)
         .then(res=>{
             setQuantity2(quantity2-1)
+            setRecentlyBorrowed(true)
             console.log(res.data)
             toast.success(`Successfully Borrowed ${Name} `)
         })
@@ -54,7 +70,7 @@ const BookDetails = () => {
                         />
                     </p>
                     <div className="card-actions justify-end">
-                        <button onClick={() => document.getElementById(`my_modal_${_id}`).showModal()} className="btn btn-ghost bg-sky-300 rounded-sm min-h-0 h-auto py-2 px-5 text-base" disabled={!quantity2}>Borrow</button>
+                        <button onClick={() => document.getElementById(`my_modal_${_id}`).showModal()} className="btn btn-ghost bg-sky-300 rounded-sm min-h-0 h-auto py-2 px-5 text-base" disabled={!quantity2||alreadyBorrowed||recentlyBorrowed}>Borrow</button>
                     </div>
                 </div>
             </div>
