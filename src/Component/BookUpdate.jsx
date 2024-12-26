@@ -28,7 +28,7 @@ const BookUpdate = () => {
 
         const formDocument = { Image, Name, selectedCategory2, contributor, ratings, AName }
         // console.log(formDocument)
-        axios.put(`http://localhost:5000/update-books/${id}`, formDocument,{withCredentials:true})
+        axios.put(`https://assignment-11-ph-server.vercel.app/update-books/${id}`, formDocument,{withCredentials:true})
 
             .then(res => {
                 console.log(res.data)

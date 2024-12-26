@@ -10,7 +10,7 @@ const BorrowedBookCard = ({ book, books, setBooks }) => {
 
     const handleReturn=e=>{
         e.preventDefault()
-        axios.delete(`http://localhost:5000/book-return/${bookId}`)
+        axios.delete(`https://assignment-11-ph-server.vercel.app/book-return/${bookId}`)
         .then(res=>{
             toast.success("The book is returned successfully")
             const newBookList=books.filter(book=>book.bookId!=bookId)

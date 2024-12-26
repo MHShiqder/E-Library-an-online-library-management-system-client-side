@@ -51,17 +51,17 @@ export const router = createBrowserRouter([
             {
                 path:"/book-update/:id",
                 element:<PrivateProfile><BookUpdate></BookUpdate></PrivateProfile>,
-                loader:({params})=>fetch(`http://localhost:5000/book-update/${params.id}`)
+                loader:({params})=>fetch(`https://assignment-11-ph-server.vercel.app/book-update/${params.id}`)
             },
             {
                 path:"/categorical-book/:category",
                 element:<PrivateProfile><CategoricalBooks></CategoricalBooks></PrivateProfile>,
-                loader:({params})=>fetch(`http://localhost:5000/categorical-book/${params.category}`)
+                loader:({params})=>fetch(`https://assignment-11-ph-server.vercel.app/categorical-book/${params.category}`)
             },
             {
                 path:"/book-details/:id",
                 element:<PrivateProfile><BookDetails></BookDetails></PrivateProfile>,
-                loader:({params})=>fetch(`http://localhost:5000/book-details/${params.id}`)
+                loader:({params})=>fetch(`https://assignment-11-ph-server.vercel.app/book-details/${params.id}`)
             },
         ]
     },

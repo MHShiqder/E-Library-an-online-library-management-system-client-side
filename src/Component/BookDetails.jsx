@@ -12,7 +12,7 @@ const BookDetails = () => {
     // Load the borrowed books 
     const [books, setBooks] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:5000/book-borrow/${user.email}`,{withCredentials:true})
+        axios.get(`https://assignment-11-ph-server.vercel.app/book-borrow/${user.email}`,{withCredentials:true})
             .then(res => {
                 setBooks(res.data)
             })
@@ -35,11 +35,11 @@ const BookDetails = () => {
         const bookId=_id;
         const borrowDate=new Date().toISOString().split("T")[0];
         const borrowData={userEmail,userName,Image, Name, selectedCategory, Description, quantity2, ratings, AName, Content,returnDate,bookId,borrowDate}
-        axios.post("http://localhost:5000/book-borrow",borrowData)
+        axios.post("https://assignment-11-ph-server.vercel.app/book-borrow",borrowData)
         .then(res=>{
             setQuantity2(quantity2-1)
             setRecentlyBorrowed(true)
-            console.log(res.data)
+            // console.log(res.data)
             toast.success(`Successfully Borrowed ${Name} `)
         })
 

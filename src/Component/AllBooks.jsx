@@ -9,10 +9,8 @@ const AllBooks = () => {
     // state for the all books 
     const [books, setBooks] = useState([])
     useEffect(() => {
-        // fetch("http://localhost:5000/all-books")
-        //     .then(res => res.json())
-        //     .then(data => setBooks(data))
-        axios.get("http://localhost:5000/all-books",{withCredentials:true})
+        
+        axios.get("https://assignment-11-ph-server.vercel.app/all-books",{withCredentials:true})
         .then(res=>setBooks(res.data))
     }, [])
     const handleFilter = e => {

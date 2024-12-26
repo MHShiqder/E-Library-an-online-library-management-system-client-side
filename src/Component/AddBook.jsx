@@ -27,7 +27,7 @@ const AddBook = () => {
 
         const formDocument = { Image, Name, selectedCategory, Description, contributor,quantity,ratings,AName,Content }
         // console.log(formDocument)
-        axios.post("http://localhost:5000/add-books",formDocument,{withCredentials:true})
+        axios.post("https://assignment-11-ph-server.vercel.app/add-books",formDocument,{withCredentials:true})
             
             .then(res => {
                 console.log(res.data)
