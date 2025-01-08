@@ -3,15 +3,20 @@ import { Link, useLoaderData } from 'react-router-dom';
 import BookCard from './BookCard';
 import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
+import Lottie from 'lottie-react';
+import bookLoading from '../Lottie/book-loading.json'
 
 const AllBooks = () => {
 
+    // state for loading 
+    const [loading,setLoading]=useState(false)
     // state for the all books 
     const [books, setBooks] = useState([])
     useEffect(() => {
-        
+        setLoading(true)
         axios.get("https://assignment-11-ph-server.vercel.app/all-books",{withCredentials:true})
         .then(res=>setBooks(res.data))
+        setLoading(false)
     }, [])
     const handleFilter = e => {
         e.preventDefault();
@@ -26,10 +31,15 @@ const AllBooks = () => {
         e.target.value == "Card" ? setIsClicked(true) : setIsClicked(false)
     }
     return (
-        <div>
+        <>
             <Helmet>
                 <title>All-Books | E-Library</title>
             </Helmet>
+        {
+            loading?
+            <div className='mx-auto my-32 w-52'><Lottie className='' animationData={bookLoading}/> </div>
+            :
+            <div>
             <div className='w-11/12 mx-auto mt-10 flex flex-col md:flex-row justify-between gap-5'>
                 <button onClick={handleFilter} className='btn btn-ghost bg-sky-300 rounded-none text-xl px-10 '>Show Available Books</button>
                 <select onChange={handleToggle} className='btn btn-ghost bg-sky-300 rounded-none text-xl px-10' defaultValue={"view"} id="">
@@ -113,6 +123,8 @@ const AllBooks = () => {
                 }
             </div>
         </div>
+        }
+        </>
     );
 };
 

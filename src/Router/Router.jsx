@@ -12,6 +12,7 @@ import Forget from "../Component/Forget";
 import BookUpdate from "../Component/BookUpdate";
 import CategoricalBooks from "../Component/CategoricalBooks";
 import BookDetails from "../Component/BookDetails";
+import ProfileEdit from "../Component/ProfileEdit";
 
 export const router = createBrowserRouter([
     {
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
                 path:"/book-details/:id",
                 element:<PrivateProfile><BookDetails></BookDetails></PrivateProfile>,
                 loader:({params})=>fetch(`https://assignment-11-ph-server.vercel.app/book-details/${params.id}`)
+            },
+            {
+                path:"/profile-edit",
+                element:<PrivateProfile><ProfileEdit></ProfileEdit></PrivateProfile>,
             },
         ]
     },

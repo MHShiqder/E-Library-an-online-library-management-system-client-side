@@ -1,11 +1,11 @@
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 
-const spanStyle = {
-  padding: '20px',
-  background: '#efefef',
-  color: '#000000'
-}
+// const spanStyle = {
+//   padding: '20px',
+//   background: '#efefef',
+//   color: '#000000'
+// }
 
 const divStyle = {
   display: 'flex',
@@ -44,7 +44,7 @@ const slideImages = [
 const Slideshow = () => {
     return (
       <div className="slide-container w-11/12 mx-auto mt-5">
-        <Slide duration={3000}>
+        <Slide duration={3000} >
          {slideImages.map((slideImage, index)=> (
             <div key={index}>
               <div style={{ ...divStyle, 'backgroundImage': `url(${slideImage.url})` }}>
