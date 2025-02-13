@@ -23,6 +23,11 @@ const AllBooks = () => {
         const newBook = books.filter(book => book.quantity > 0)
         setBooks(newBook)
     }
+    const handleSort = e => {
+        e.preventDefault();
+        const newBook = books.slice().sort((a, b) => a.Name.localeCompare(b.Name));
+        setBooks(newBook)
+    }
 
     // state for toggle functionality
     const [isClicked, setIsClicked] = useState(true)
@@ -42,6 +47,7 @@ const AllBooks = () => {
             <div>
             <div className='w-11/12 mx-auto mt-10 flex flex-col md:flex-row justify-between gap-5'>
                 <button onClick={handleFilter} className='btn btn-ghost bg-sky-300 rounded-none text-xl px-10 '>Show Available Books</button>
+                <button onClick={handleSort} className='btn btn-ghost bg-sky-300 rounded-none text-xl px-10 '>Sort Alphabetically</button>
                 <select onChange={handleToggle} className='btn btn-ghost bg-sky-300 rounded-none text-xl px-10' defaultValue={"view"} id="">
                     <option value="view" disabled>View Functionality</option>
                     <option value="Card">Card View</option>
