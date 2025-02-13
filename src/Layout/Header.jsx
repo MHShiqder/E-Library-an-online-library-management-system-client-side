@@ -8,10 +8,19 @@ const Header = () => {
     const {user,userSignOut}=useContext(AuthContext)
     const links = <>
 
-        <NavLink className="sm:text-lg btn btn-ghost font-semibold mr-2" to="/">Home</NavLink>
-        <NavLink className="sm:text-lg btn btn-ghost font-semibold mr-2" to="/all-books">All Books</NavLink>
-        <NavLink className="sm:text-lg btn btn-ghost font-semibold mr-2" to="/add-book">Add Book</NavLink>
-        <NavLink className="sm:text-lg btn btn-ghost font-semibold mr-2" to="/borrowed-books">Borrowed Books</NavLink>
+        <NavLink className="sm:text-base btn btn-ghost font-semibold mr-2" to="/">Home</NavLink>
+        <NavLink className="sm:text-base btn btn-ghost font-semibold mr-2" to="/all-books">All Books</NavLink>
+        {
+            user?
+            <>
+            <NavLink className="sm:text-base btn btn-ghost font-semibold mr-2" to="/add-book">Add Book</NavLink>
+            <NavLink className="sm:text-base btn btn-ghost font-semibold mr-2" to="/borrowed-books">Borrowed Books</NavLink>
+            </>
+            :
+            <>
+            </>
+        }
+        <NavLink className="sm:text-base btn btn-ghost font-semibold mr-2" to="/about-us">About Us</NavLink>
                
     </>
 
@@ -68,7 +77,7 @@ const Header = () => {
                     <div className="navbar-end   w-1/3 md:w-1/2">
                         {
                             user
-                            ?<div className=" flex group hover:bg-sky-300 absolute flex-col pt-1 hover:border-2 hover:border-t-0 hover:border-white top-1 p-3 right-16 hover:right-4 gap-2 items-center  my-auto ">
+                            ?<div className=" flex group hover:bg-sky-300 absolute flex-col pt-1 hover:border-2 hover:border-t-0 hover:border-white top-1 p-3 pr-0  hover:right-4 gap-2 items-center  my-auto mr-0 ">
                                 <img className="w-12 h-12 rounded-full object-cover  " src={`${user.photoURL}`} alt="" />
                                 <h2 className="text-black hidden group-hover:block font-bold">{user.displayName}</h2>
                                 <Link to="/profile-edit" className="border-2 px-3 py-1 text-sm border-white text-black hidden group-hover:block"><button >Edit Profile</button></Link>

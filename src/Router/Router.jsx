@@ -13,6 +13,7 @@ import BookUpdate from "../Component/BookUpdate";
 import CategoricalBooks from "../Component/CategoricalBooks";
 import BookDetails from "../Component/BookDetails";
 import ProfileEdit from "../Component/ProfileEdit";
+import AboutUs from "../Component/About Us/AboutUs";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
             {
                 path:"/forget",
                 element:<Forget></Forget>,
+            },
+            {
+                path:"/about-us",
+                element:<AboutUs></AboutUs>,
             },
             {
                 path:"/all-books",
