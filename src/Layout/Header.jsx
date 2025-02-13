@@ -8,19 +8,19 @@ const Header = () => {
     const {user,userSignOut}=useContext(AuthContext)
     const links = <>
 
-        <NavLink className="sm:text-base btn btn-ghost font-semibold mr-2" to="/">Home</NavLink>
-        <NavLink className="sm:text-base btn btn-ghost font-semibold mr-2" to="/all-books">All Books</NavLink>
+        <NavLink className="sm:text-base btn btn-ghost font-semibold mr-0" to="/">Home</NavLink>
+        <NavLink className="sm:text-base btn btn-ghost font-semibold mr-0" to="/all-books">All Books</NavLink>
         {
             user?
             <>
-            <NavLink className="sm:text-base btn btn-ghost font-semibold mr-2" to="/add-book">Add Book</NavLink>
-            <NavLink className="sm:text-base btn btn-ghost font-semibold mr-2" to="/borrowed-books">Borrowed Books</NavLink>
+            <NavLink className="sm:text-base btn btn-ghost font-semibold mr-0" to="/add-book">Add Book</NavLink>
+            <NavLink className="sm:text-base btn btn-ghost font-semibold mr-0" to="/borrowed-books">Borrowed Books</NavLink>
             </>
             :
             <>
             </>
         }
-        <NavLink className="sm:text-base btn btn-ghost font-semibold mr-2" to="/about-us">About Us</NavLink>
+        <NavLink className="sm:text-base btn btn-ghost font-semibold mr-0" to="/about-us">About Us</NavLink>
                
     </>
 
