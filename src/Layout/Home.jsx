@@ -21,9 +21,9 @@ const Home = () => {
                 <title>Home | E-Library</title>
             </Helmet>
             {/* Typewriter text  */}
-            <div className='App text-5xl font-bold mt-5'>
+            {/* <div className='App text-5xl font-bold mt-5'>
                <h2 className="text-sky-500">[ <span >{text}</span> ]  </h2>
-            </div>
+            </div> */}
             <Slideshow></Slideshow>
             <CategoryCard></CategoryCard>
             <Success></Success>
