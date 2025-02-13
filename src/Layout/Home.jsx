@@ -4,6 +4,7 @@ import { useTypewriter } from 'react-simple-typewriter'
 import Success from "../Component/Success";
 import Newsletter from "../Component/Newsletter";
 import { Helmet } from "react-helmet-async";
+import ContactForm from "../Component/ContactForm/ContactForm";
 
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
             <CategoryCard></CategoryCard>
             <Success></Success>
             <Newsletter></Newsletter>
+            <ContactForm></ContactForm>
         </div>
     );
 };
