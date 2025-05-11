@@ -6,7 +6,7 @@ import {BsInstagram, BsLinkedin, BsTwitter} from "react-icons/bs";
 const ContactForm = () => {
 
     return (
-        <section className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[35px] boxShadow  mb-20 rounded-none">
+        <section className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[35px] boxShadow  mb-10 rounded-none">
 
             {/*  informations  */}
             <aside className="w-full bg-[#eab64f] flex flex-col justify-between p-[25px] rounded-none">
